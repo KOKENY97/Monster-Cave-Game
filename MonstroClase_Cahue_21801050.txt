@@ -1,0 +1,221 @@
+import random
+import time
+import re
+
+#Classe do Monstro
+class Monster():
+  def __init__(self):
+    self.name = "Cheese Monster"
+    self.high = "6 meters"
+    self.max_hit_points = 10
+    self.current_hit_points = 10
+    self.max_speed = 6 
+    self.armor_amount = 8
+
+monster = Monster()
+
+def prompt():
+    x = input()
+    return x
+
+#Inicio
+def startGame():
+    print("Welcome to the Monster Dungeon traveler")
+    print()
+    print("Do you have what it takes to find the treasure?")
+    print()
+    print("You have just entered a dungeon through a trapdoor in a cellar.")
+    print("In front of you, you see two corridors. One facing North (N) and the other facing East (E)")
+    print()
+    print('''Options:
+n - to go north
+e - to go east
+''')
+    command = prompt()
+    if command == "e":
+      eastRoom()
+    elif command == "n":
+      northRoom()
+    else:
+      print("You must choose a path!")
+
+def mainRoom():
+    print("You have returned to the entrance of the dungeon.")
+    print("In front of you, you see two corridors. One facing North (N) and the other facing East (E)")
+    print()
+    print('''Options:
+  n - to go north
+  e - to go east
+  ''')
+    command = prompt()
+    if command == "e":
+      eastRoom()
+    elif command == "n":
+      northRoom()
+    else:
+      print("You must choose a path!")
+  
+
+    
+def eastRoom():
+    print("You have reached a dark room with two branching paths. One to the East (E), where you can feel a slight breeze. And one to the West (W).")
+    print()
+    print('''Options:
+e - to go east
+w - to go west
+''')
+    command = prompt()
+    if command == "e":
+      gameOver()
+    elif command == "w":
+      northEastRoom()
+    else:
+      print("You must choose a path!")
+
+
+def northRoom():
+  print("You follow straight ahead and reach another chamber with a corridor facing North (N) and the other facing West (W).")
+  print("You can feel a slight breeze coming from the corridor to West, but in front of you, you can see some sort of animal track, which you cannot identify.")
+  print()
+  print('''Options:
+w - to go west
+n - to go north
+''')
+  command = prompt()
+  if command == "w":
+      gameOver()
+  elif command == "n":
+      monsterRoom()
+  else:
+    print("You must choose a path!")
+
+def northEastRoom():
+  print("You are now at another room. All you can see is a wall in front of you and an open passage to East (E), where you can feel a slight breeze.")
+  print()
+  print('''Options:
+e - to go east
+b - to go back to the beggining
+''')
+  command = prompt()
+  if command == "e":
+      gameOver()
+  elif command == "b":
+      mainRoom()
+  else:
+    print("You must choose a path!")
+
+def monsterRoom():
+  print("You followed the animal tracks through the north corridor.")
+  print("You`ve reached a large chamber, with torches illuminating the area.")
+  time.sleep(2)
+  print("In the middle of the room, there is a large chest, encrusted in gold.")
+  print()
+  time.sleep(2)
+  print("That was it. You have found the treasure")
+  print()
+  time.sleep(2)
+  print("However, all of a sudden. An enourmous monster appears! It is defending the treasure!")
+  print()
+  print('''Options:
+f - to fire arrow
+b - to go back to the beggining
+s - to check monster stats
+''')
+  command = prompt()
+  if command == "f":
+      arrow()
+  elif command == "b":
+      mainRoom()
+  elif command == "s":
+      print("Name: ", monster.name)
+      print("High: ", monster.high)
+      print("Hit Points: ", monster.current_hit_points)
+      print("Speed: ", monster.max_speed)
+      print("Armor: ", monster.armor_amount)
+      print()
+      monsterRoom()
+  else:
+    print("You must choose an action!")
+
+#Combate
+def arrow():
+
+    fireWeapon = random.randint(1, 2)
+
+    if fireWeapon == int (1):
+      print("You fire your arrow!")
+      time.sleep(2)
+      print("Hitting the monster right in the heart!")
+      time.sleep(2)
+      print("The beast is dead!")
+      print()
+      monsterDead()
+    else:
+      print("You fire your arrow!")
+      time.sleep(2)
+      print("But you missed!") 
+      time.sleep(2)
+      print("The monster eats you raw!")
+      print()
+      gameOverM()
+    
+
+def monsterDead():
+  print("YOU DID IT!")
+  print()
+  print("You have slain the Cheese monster and can now claim your reward!")
+  print("You opened the treasure chest and inside you have found what you've been looking for. Your long lost cellphone charger!")
+  print()
+  print("With the treasure now in your hands you prepare yourself to leave. However, right when you were heading back, you hear a noise!")
+  print("A big noise coming from a previously unseen wooden door, on the wall behind the chest.")
+  print()
+  print('''Options:
+c - to check noise
+b - to go back to the beggining
+''')
+  command = prompt()
+  if command == "c":
+      gameOver()
+  elif command == "b":
+      mainRoomF()
+  else:
+    print("You must choose an action!")
+
+def mainRoomF():
+  print("You have done it traveler! You entered the dungeon, killed the beast and have retrieved the treasure!")
+  print()
+  print("WELL DONE!")
+  print()
+  playAgain()
+
+  
+
+def gameOverM():
+  print("You've been eaten by the monster")
+  print()
+  print("You are dead")
+  print()
+  print("GAME OVER")
+  print()
+  playAgain()
+
+def gameOver():
+  print("You followed your choosen path. And out of nowhere a trapdoor opens beneath you.")
+  print()
+  print("You are dead")
+  print()
+  print("GAME OVER")
+  print()
+  playAgain()
+
+
+#Jogar de novo
+def playAgain():
+    print("Do you want to play again? (yes/no)")
+    command = prompt()
+    if command == "yes":     
+      startGame()
+    else:
+      print("GAME OVER")
+
+startGame()
