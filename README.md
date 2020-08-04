@@ -16,4 +16,4 @@ Below you can see a print of the game's initial screen:
 
 If you like Python and Text Adventure Games, I encourage you to build upon this project.
 
-Let's create the best adventure ever!
+
