@@ -1,6 +1,6 @@
 # Python based Text Adventure Game.
 
-Simple Text Adv. game, developed back in 2018, when I was studying Videogame Development.
+Simple Text Adv. game I developed.
 
 The game was developed using:
 - [Python](https://www.python.org/ "Python")
